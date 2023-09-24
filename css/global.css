@@ -1,0 +1,31 @@
+/**Backgrounds**/
+.bg-global {
+    background-color: #F3FCDF;
+}
+.bg-globalT {
+    background-color:#f3fcdf91;
+}
+
+.border-global {
+    border-color: #B4D868;
+    border-style: solid;
+}
+
+/**Sections**/
+#start {
+    height: 100vh;
+    background-image: url(/img/main.png);
+    background-repeat: no-repeat;
+    background-size: cover;
+}
+
+/*Der Start soll den gesamten Höhe des Bildschirm einnehmen und das Hintergrundbild
+soll sich nicht wiederholen und den den gesamten Bildschirm ausnutzen*/
+#goals {}
+#tabel {}
+
+
+/**Buttons**/
+.btn-outline-global {
+
+}
