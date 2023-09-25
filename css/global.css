@@ -11,7 +11,18 @@
     border-style: solid;
 }
 
+/**Paddings**/
+.section-padding {
+    padding: 75px 0;
+}
+
+/**Global**/
+
+/************/
 /**Sections**/
+/************/
+
+/** start **/
 #start {
     height: 100vh;
     background-image: url(/img/main.png);
@@ -19,13 +30,24 @@
     background-size: cover;
 }
 
-/*Der Start soll den gesamten Höhe des Bildschirm einnehmen und das Hintergrundbild
-soll sich nicht wiederholen und den den gesamten Bildschirm ausnutzen*/
-#goals {}
-#tabel {}
+/*Der Start soll den gesamten Höhe des Bildschirm einnehmen, das Hintergrundbild
+darf sich nicht wiederholen und den gesamten Bildschirm ausnutzen*/
 
-
-/**Buttons**/
-.btn-outline-global {
-
+/** goals **/
+#goals h3 {
+    height: 3em;
+    border-bottom: 2px solid rgba(172, 172, 172, 0.472);
 }
+#goals hr {
+    width: 15em;
+    margin-top: -0.5em;
+    border-top: 4px solid;
+}
+
+/** tabel **/
+#tabel hr {
+    width: 20em;
+    margin-top: -0.5em;
+    border-top: 4px solid;
+}
+
