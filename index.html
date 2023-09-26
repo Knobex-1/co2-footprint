@@ -1,14 +1,22 @@
 <!DOCTYPE html>
 <html lang="de-de">
     <head>
-        <!-- Zeichensatz für die Darstellung der Seite + Einstellung das die Website auf mobilen Geräten richtig angezeigt wird-->
+        <!--Zeichensatz für die Darstellung der Seite + Einstellung das die Website auf mobilen Geräten richtig angezeigt wird-->
         <meta charset="utf-8"> 
         <meta name="viewport" content="width=device-width, initial-scale=1">
         <title>Green Planet e.V.</title>
 
-        <!-- Einbindung der Stylesheets /global.css + der bootstrap.min.css vom Bootstrap CSS Framework -->
+        <!--Einbindung der Stylesheets /global.css + der bootstrap.min.css vom Bootstrap CSS Framework -->
         <link rel="stylesheet" href="/css/global.css">
         <link rel="stylesheet" href="/css/bootstrap.min.css">
+        <link rel="stylesheet" href="/css/tabulator.min.css">
+
+        <!--Einbindung der JS Frameworks Papa Parse und Tabulator-->
+        <script type="text/javascript" src="/test/papaparse.min.js" defer></script>
+        <script type="text/javascript" src="/js/tabulator.min.js" defer></script>
+        <!--Einbindung des eigenen JS Scrips-->
+        <script type="text/javascript" src="/js/table.js" defer></script>
+        <!--Scripts müssen durch defer warten, bis die Website geladen ist-->
     </head>
     <body>
         <section id="start">
@@ -73,13 +81,15 @@
               <div class="row justify-content-center">
                 <h1 class="display-5 fw-bold text-center">CO&sup2-Emissionen</h1>
                 <hr>
+                <div id="co2-table"></div>
               </div>
-
+              <div class="row justify-content-center">
+                
+              </div>
             </div>
           </section>
     </body>
     <footer>
 
     </footer>
-
 </html>
