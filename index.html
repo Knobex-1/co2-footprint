@@ -9,10 +9,10 @@
         <!--Einbindung der Stylesheets /global.css + der bootstrap.min.css vom Bootstrap CSS Framework -->
         <link rel="stylesheet" href="/css/global.css">
         <link rel="stylesheet" href="/css/bootstrap.min.css">
-        <link rel="stylesheet" href="/css/tabulator.min.css">
+        <link rel="stylesheet" href="/css/tabulator_bootstrap5.css">
 
         <!--Einbindung der JS Frameworks Papa Parse und Tabulator-->
-        <script type="text/javascript" src="/test/papaparse.min.js" defer></script>
+        <script type="text/javascript" src="/js/papaparse.min.js" defer></script>
         <script type="text/javascript" src="/js/tabulator.min.js" defer></script>
         <!--Einbindung des eigenen JS Scrips-->
         <script type="text/javascript" src="/js/table.js" defer></script>
@@ -77,14 +77,37 @@
           </section>
 
           <section id="tabel" class="section-padding bg-global">
-            <div class="container-fluid">
+            <div class="container-fluid row justify-content-center">
               <div class="row justify-content-center">
                 <h1 class="display-5 fw-bold text-center">CO&sup2-Emissionen</h1>
                 <hr>
-                <div id="co2-table"></div>
               </div>
               <div class="row justify-content-center">
-                
+                <div class="col-xl-6 col-lg-8 col-md-10">
+                  <!--Filter Auswahl für die Tabellen-->
+                  <div class="d-flex justify-content-start g-3 pb-3">
+                    <div class="pe-3">
+                        <p class="mb-0 fw-bold">Land</p>
+                        <input type="text" list="country_dList" id="country_filter" class="form-control">
+                        <datalist id="country_dList">
+                        </datalist>
+                        <select name="Test" id="">
+                          <option value="test">test</option>
+                        </select>
+                    </div>
+                    <div class="pe-3">
+                      <p class="mb-0 fw-bold">Unternehmen</p>
+                      <input type="text" list="company_dList" id="company_filter" class="form-control">
+                      <datalist id="company_dList">
+                      </datalist>
+                    </div>
+                    <div class="">
+                      <br>
+                      <button type="button" class="btn btn-primary" id="filterButton">Filtern</button>
+                    </div>
+                  </div>
+                  <div id="co2-table"></div>
+                </div>
               </div>
             </div>
           </section>
