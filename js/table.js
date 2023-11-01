@@ -17,6 +17,9 @@ Papa.parse("/data/table.csv", {
             ],
         });
         //Test DataList für Filter
+        let errorText = document.getElementById("errorText");
+        let companyNames = results.data.map(entry => entry.company);//Erzeugt ein Array das nur aus den Firmennamen der table.csv Datei besteht. Problem: Wenn eine Firma doppelt vorkommen, ist diese mit im Array
+        let uniqueCompanyNames = [...new Set(companyNames)];//Durch "Set" werden alle doppelten Firmennamen aus dem Array entfernt
         let country_filter = document.getElementById("country_filter");
         let countryNames = results.data.map(entry => entry.country);//Erzeugt ein Array das nur aus den Länder der table.csv Datei besteht. Problem: Wenn Länder doppelt vorkommen, sind diese mit im Array
         let uniqueCountryNames = [...new Set(countryNames)];//Durch "Set" werden alle doppelten Ländernamen aus dem Array entfernt
@@ -32,21 +35,19 @@ Papa.parse("/data/table.csv", {
         let company_filter = document.getElementById("company_filter");
         document.getElementById("country_filter").addEventListener('change', change);
         function change(){
-            company_dList.innerHTML =""; // Auswahl leeren
+            company_dList.textContent =""; // Auswahl leeren
             company_filter.value =""; //setzt den Value auf ""
             if (country_filter.value != "Alle Länder"){
                 let filteredCompanySection = results.data.filter(entry => entry.country === country_filter.value);
-                let companyNames = filteredCompanySection.map(entry => entry.company);//Erzeugt ein Array das nur aus den Firmennamen der table.csv Datei besteht. Problem: Wenn eine Firma doppelt vorkommen, ist diese mit im Array
-                let uniqueCompanyNames = [...new Set(companyNames)];//Durch "Set" werden alle doppelten Firmennamen aus dem Array entfernt
-                uniqueCompanyNames.forEach(name =>{
+                let filteredCompanyNames = filteredCompanySection.map(entry => entry.company);//Erzeugt ein Array das nur aus den Firmennamen der table.csv Datei besteht. Problem: Wenn eine Firma doppelt vorkommen, ist diese mit im Array
+                let filteredUniqueCompanyNames = [...new Set(filteredCompanyNames)];//Durch "Set" werden alle doppelten Firmennamen aus dem Array entfernt
+                filteredUniqueCompanyNames.forEach(name =>{
                     console.log(name);
                     let option = document.createElement("option");
                     option.value = name;
                     company_dList.appendChild(option);
                 });
             } else {
-                let companyNames = results.data.map(entry => entry.company);//Erzeugt ein Array das nur aus den Firmennamen der table.csv Datei besteht. Problem: Wenn eine Firma doppelt vorkommen, ist diese mit im Array
-                let uniqueCompanyNames = [...new Set(companyNames)];//Durch "Set" werden alle doppelten Firmennamen aus dem Array entfernt
                 uniqueCompanyNames.forEach(name =>{
                     console.log(name);
                     let option = document.createElement("option");
@@ -59,7 +60,16 @@ Papa.parse("/data/table.csv", {
         //Country Filter fehlt noch und FilterFunktion
         document.getElementById("filterButton").addEventListener('click', filtern);
         function filtern(){
-            table.clearFilter();//Löscht alle Filter EInstellungen um danach den company Filter zu setzten
+            table.clearFilter();//Löscht alle Filter Einstellungen
+            errorText.textContent = "";
+            if (company_filter.value && !uniqueCompanyNames.includes(company_filter.value) && company_filter.value !="") {
+                errorText.textContent = "Ungültige Firmenauswahl.";
+                return;
+            }
+            if (country_filter.value && !uniqueCountryNames.includes(country_filter.value) && country_filter.value !="Alle Länder") {
+                errorText.textContent = "Ungültige Länderauswahl.";
+                return;
+            }
             if (country_filter.value != "Alle Länder" && country_filter.value != "") { //Prüft ob NICHT im country_filter.value "Alle Länder" und das dieser nicht Leer ist
                 table.setFilter("country", "=", country_filter.value); //Einstellen des Filters country mit den Wert aus dem Select Element
                 if (company_filter.value != "") {
@@ -72,10 +82,9 @@ Papa.parse("/data/table.csv", {
                         company_filter.value =""; //setzt den Value auf ""
                     }
                 }
-            }  else { 
-                /* Country_filter steht "Alle Länder", einer zusätzliche Überprüfung ob ein Unternehmen eingetragen ist nicht nötig. 
-                Sofern ein Unternehm eingetragen ist, wird danach gefiltert. Der Filter wird gefüllt oder geleert eingetragen. */
+            }  else if (company_filter.value !="") { //überprüft ob das Felt nicht leer ist
                 table.setFilter("company", "=", company_filter.value);
+            } else {
             }
         };
         change();//führt die Funktion einmalig aus um die DataList von Unternehmen zu befüllen
