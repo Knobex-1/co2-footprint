@@ -32,12 +32,8 @@ Papa.parse("/data/table.csv", {
         let company_filter = document.getElementById("company_filter");
         document.getElementById("country_filter").addEventListener('change', change());
         function change(){
-<<<<<<< HEAD
-            company_dList.textContent =""; // Auswahl leeren
-            company_filter.value =""; //setzt den Value auf ""
-=======
             company_dList.innerHTML =""; // Auswahl leeren
->>>>>>> parent of 34257f0 (Weitere IF-Bedingung im filter. Vorher konnte man nach Unternehmen suchen, die nicht in einem Land waren. company_filter.value setzt sich nach ändern des Landes auf '' um fehler zu vermeiden.)
+            company_filter.value =""; //setzt den Value auf ""
             if (country_filter.value != "Alle Länder"){
                 let filteredCompanySection = results.data.filter(entry => entry.country === country_filter.value);
                 let companyNames = filteredCompanySection.map(entry => entry.company);//Erzeugt ein Array das nur aus den Firmennamen der table.csv Datei besteht. Problem: Wenn eine Firma doppelt vorkommen, ist diese mit im Array
@@ -64,15 +60,9 @@ Papa.parse("/data/table.csv", {
         let filters = []; //hinzufügen eines Filter Array
         document.getElementById("filterButton").addEventListener('click', filtern);
         function filtern(){
-<<<<<<< HEAD
             table.clearFilter();//Löscht alle Filter EInstellungen um danach den company Filter zu setzten
             if (country_filter.value != "Alle Länder" && country_filter.value != "") { //Prüft ob NICHT im country_filter.value "Alle Länder" und das dieser nicht Leer ist
                 table.setFilter("country", "=", country_filter.value); //Einstellen des Filters country mit den Wert aus dem Select Element
-                alert("i bims");
-=======
-            if (country_filter.value != "Alle Länder" && country_filter.value != "") {
-                table.setFilter("country", "=", country_filter.value);
->>>>>>> parent of 34257f0 (Weitere IF-Bedingung im filter. Vorher konnte man nach Unternehmen suchen, die nicht in einem Land waren. company_filter.value setzt sich nach ändern des Landes auf '' um fehler zu vermeiden.)
                 if (company_filter.value != "") {
                     table.setFilter("company", "=", company_filter.value);
                 } 
