@@ -1,3 +1,9 @@
+function createOption(value) {
+    let option = document.createElement("option");
+    option.value = value;
+    option.textContent = value;
+    return option;
+}
 // parsen der CSV Datei "table.cvs" mit PapaParse
 Papa.parse("/data/table.csv", {
     download: true, //Download der angegeben Datei vom angegebenen Pfad
@@ -20,19 +26,16 @@ Papa.parse("/data/table.csv", {
         let errorText = document.getElementById("errorText");
         let companyNames = results.data.map(entry => entry.company);//Erzeugt ein Array das nur aus den Firmennamen der table.csv Datei besteht. Problem: Wenn eine Firma doppelt vorkommen, ist diese mit im Array
         let uniqueCompanyNames = [...new Set(companyNames)];//Durch "Set" werden alle doppelten Firmennamen aus dem Array entfernt
+        let company_dList = document.getElementById("company_dList");
+        let company_filter = document.getElementById("company_filter");
         let country_filter = document.getElementById("country_filter");
         let countryNames = results.data.map(entry => entry.country);//Erzeugt ein Array das nur aus den Länder der table.csv Datei besteht. Problem: Wenn Länder doppelt vorkommen, sind diese mit im Array
         let uniqueCountryNames = [...new Set(countryNames)];//Durch "Set" werden alle doppelten Ländernamen aus dem Array entfernt
         uniqueCountryNames.forEach(name =>{ //Hinzufügen der Länder aus dem Array mit der forEach() Funktion
-            let option = document.createElement("option");
-            option.value = name;
-            option.textContent = name;
-            country_filter.appendChild(option); //Hinzufügen des erstellten Optionsfeld zur Datalist Countrylist
+            country_filter.appendChild(createOption(name)); //Hinzufügen des erstellten Optionsfeld zur Datalist Countrylist
         });
         
         //Company Filter
-        let company_dList = document.getElementById("company_dList");
-        let company_filter = document.getElementById("company_filter");
         document.getElementById("country_filter").addEventListener('change', change);
         function change(){
             company_dList.textContent =""; // Auswahl leeren
@@ -42,17 +45,11 @@ Papa.parse("/data/table.csv", {
                 let filteredCompanyNames = filteredCompanySection.map(entry => entry.company);//Erzeugt ein Array das nur aus den Firmennamen der table.csv Datei besteht. Problem: Wenn eine Firma doppelt vorkommen, ist diese mit im Array
                 let filteredUniqueCompanyNames = [...new Set(filteredCompanyNames)];//Durch "Set" werden alle doppelten Firmennamen aus dem Array entfernt
                 filteredUniqueCompanyNames.forEach(name =>{
-                    console.log(name);
-                    let option = document.createElement("option");
-                    option.value = name;
-                    company_dList.appendChild(option);
+                    company_dList.appendChild(createOption(name));
                 });
             } else {
                 uniqueCompanyNames.forEach(name =>{
-                    console.log(name);
-                    let option = document.createElement("option");
-                    option.value = name;
-                    company_dList.appendChild(option);
+                    company_dList.appendChild(createOption(name));
                 });
             }
         };
@@ -78,7 +75,7 @@ Papa.parse("/data/table.csv", {
                     if (match) {
                         table.setFilter("company", "=", company_filter.value);
                     } else {
-                        alert("Das ausgewählte Unternehmen existiert nicht im gewählten Land.");
+                        errorText.textContent = "Das ausgewählte Unternehmen existiert nicht im gewählten Land.";
                         company_filter.value =""; //setzt den Value auf ""
                     }
                 }

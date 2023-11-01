@@ -85,24 +85,24 @@
               <div class="row justify-content-center">
                 <div class="col-xl-6 col-lg-8 col-md-10">
                   <!--Filter Auswahl für die Tabellen-->
-                  <div class="d-flex justify-content-start g-3 pb-3">
-                    <div class="pe-3">
+                  <div class="d-flex flex-wrap justify-content-start g-3 pb-3">
+                    <div class="col-4 pe-1">
                         <p class="mb-0 fw-bold">Land</p>
                         <select name="country_filter" id="country_filter" class="form-select">
                           <option value="Alle Länder">Alle Länder</option>
                         </select>
                     </div>
-                    <div class="pe-3">
+                    <div class="col-4 pe-3">
                       <p class="mb-0 fw-bold">Unternehmen</p>
                       <input type="text" list="company_dList" id="company_filter" class="form-control">
                       <datalist id="company_dList">
                       </datalist>
                     </div>
-                    <div class="">
+                    <div class="col-3">
                       <br>
                       <button type="button" class="btn btn-primary" id="filterButton">Filtern</button>
                     </div>
-                    <div class="">
+                    <div class="col-12">
                       <p class="text-danger" id="errorText"></p>
                     </div>
                   </div>
