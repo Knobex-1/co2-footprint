@@ -13,7 +13,7 @@ Papa.parse("/data/table.csv", {
                 {title:"Unternehmen", field:"company", sorter:"string"},
                 {title:"Branche", field:"industry", sorter:"string"},
                 {title:"Land", field:"country", sorter:"string"},
-                {title:"CO&sup2;-Emissionen", field:"co2", sorter:"number", formatterParams:"color"},
+                {title:"CO&sup2;-Emissionen in t", field:"co2", sorter:"number", formatterParams:"color"},
             ],
         });
         //Test DataList für Filter
@@ -30,9 +30,10 @@ Papa.parse("/data/table.csv", {
         //Company Filter
         let company_dList = document.getElementById("company_dList");
         let company_filter = document.getElementById("company_filter");
-        document.getElementById("country_filter").addEventListener('change', change());
+        document.getElementById("country_filter").addEventListener('change', change);
         function change(){
             company_dList.innerHTML =""; // Auswahl leeren
+            company_filter.value =""; //setzt den Value auf ""
             if (country_filter.value != "Alle Länder"){
                 let filteredCompanySection = results.data.filter(entry => entry.country === country_filter.value);
                 let companyNames = filteredCompanySection.map(entry => entry.company);//Erzeugt ein Array das nur aus den Firmennamen der table.csv Datei besteht. Problem: Wenn eine Firma doppelt vorkommen, ist diese mit im Array
@@ -56,23 +57,27 @@ Papa.parse("/data/table.csv", {
         };
 
         //Country Filter fehlt noch und FilterFunktion
-        let filters = []; //hinzufügen eines Filter Array
         document.getElementById("filterButton").addEventListener('click', filtern);
         function filtern(){
-            if (country_filter.value != "Alle Länder" && country_filter.value != "") {
-                table.setFilter("country", "=", country_filter.value);
+            table.clearFilter();//Löscht alle Filter EInstellungen um danach den company Filter zu setzten
+            if (country_filter.value != "Alle Länder" && country_filter.value != "") { //Prüft ob NICHT im country_filter.value "Alle Länder" und das dieser nicht Leer ist
+                table.setFilter("country", "=", country_filter.value); //Einstellen des Filters country mit den Wert aus dem Select Element
                 if (company_filter.value != "") {
-                    table.setFilter("company", "=", company_filter.value);
-                } 
-            } else if (country_filter.value = "Alle Länder" && company_filter.value == "") {
-                table.clearFilter();
-            } else {
-                table.clearFilter();
+                    // Überprüft ob das Unternehmen im ausgewählten Land existiert
+                    let match = results.data.some(entry => entry.country === country_filter.value && entry.company === company_filter.value);
+                    if (match) {
+                        table.setFilter("company", "=", company_filter.value);
+                    } else {
+                        alert("Das ausgewählte Unternehmen existiert nicht im gewählten Land.");
+                        company_filter.value =""; //setzt den Value auf ""
+                    }
+                }
+            }  else { 
+                /* Country_filter steht "Alle Länder", einer zusätzliche Überprüfung ob ein Unternehmen eingetragen ist nicht nötig. 
+                Sofern ein Unternehm eingetragen ist, wird danach gefiltert. Der Filter wird gefüllt oder geleert eingetragen. */
                 table.setFilter("company", "=", company_filter.value);
             }
-
         };
-
-
+        change();//führt die Funktion einmalig aus um die DataList von Unternehmen zu befüllen
     }
 });
