@@ -17,35 +17,62 @@ Papa.parse("/data/table.csv", {
             ],
         });
         //Test DataList für Filter
-        let country_dList = document.getElementById("country_dList");
         let country_filter = document.getElementById("country_filter");
         let countryNames = results.data.map(entry => entry.country);//Erzeugt ein Array das nur aus den Länder der table.csv Datei besteht. Problem: Wenn Länder doppelt vorkommen, sind diese mit im Array
         let uniqueCountryNames = [...new Set(countryNames)];//Durch "Set" werden alle doppelten Ländernamen aus dem Array entfernt
-        uniqueCountryNames.forEach(name =>{
+        uniqueCountryNames.forEach(name =>{ //Hinzufügen der Länder aus dem Array mit der forEach() Funktion
             let option = document.createElement("option");
             option.value = name;
-            country_dList.appendChild(option);
+            option.textContent = name;
+            country_filter.appendChild(option); //Hinzufügen des erstellten Optionsfeld zur Datalist Countrylist
         });
-        //Country Filter fehlt noch und FilterFunktion
-        document.getElementById("filterButton").addEventListener('click', filtern);
-        function filtern(){
-            if (country_filter.value) {
-                table.setFilter("country", "=", country_filter.value);
-            } else {
-                table.removeFilter("country", "=", country_filter.value);
-            }
-        };
         
-        //Test DataList für Filter
+        //Company Filter
         let company_dList = document.getElementById("company_dList");
         let company_filter = document.getElementById("company_filter");
-        let companyNames = results.data.map(entry => entry.company);//Erzeugt ein Array das nur aus den Länder der table.csv Datei besteht. Problem: Wenn Länder doppelt vorkommen, sind diese mit im Array
-        let uniqueCompanyNames = [...new Set(companyNames)];//Durch "Set" werden alle doppelten Ländernamen aus dem Array entfernt
-        uniqueCompanyNames.forEach(name =>{
-            let option = document.createElement("option");
-            option.value = name;
-            company_dList.appendChild(option);
-        });
+        document.getElementById("country_filter").addEventListener('change', change());
+        function change(){
+            company_dList.innerHTML =""; // Auswahl leeren
+            if (country_filter.value != "Alle Länder"){
+                let filteredCompanySection = results.data.filter(entry => entry.country === country_filter.value);
+                let companyNames = filteredCompanySection.map(entry => entry.company);//Erzeugt ein Array das nur aus den Firmennamen der table.csv Datei besteht. Problem: Wenn eine Firma doppelt vorkommen, ist diese mit im Array
+                let uniqueCompanyNames = [...new Set(companyNames)];//Durch "Set" werden alle doppelten Firmennamen aus dem Array entfernt
+                uniqueCompanyNames.forEach(name =>{
+                    console.log(name);
+                    let option = document.createElement("option");
+                    option.value = name;
+                    company_dList.appendChild(option);
+                });
+            } else {
+                let companyNames = results.data.map(entry => entry.company);//Erzeugt ein Array das nur aus den Firmennamen der table.csv Datei besteht. Problem: Wenn eine Firma doppelt vorkommen, ist diese mit im Array
+                let uniqueCompanyNames = [...new Set(companyNames)];//Durch "Set" werden alle doppelten Firmennamen aus dem Array entfernt
+                uniqueCompanyNames.forEach(name =>{
+                    console.log(name);
+                    let option = document.createElement("option");
+                    option.value = name;
+                    company_dList.appendChild(option);
+                });
+            }
+        };
+
+        //Country Filter fehlt noch und FilterFunktion
+        let filters = []; //hinzufügen eines Filter Array
+        document.getElementById("filterButton").addEventListener('click', filtern);
+        function filtern(){
+            if (country_filter.value != "Alle Länder" && country_filter.value != "") {
+                table.setFilter("country", "=", country_filter.value);
+                if (company_filter.value != "") {
+                    table.setFilter("company", "=", company_filter.value);
+                } 
+            } else if (country_filter.value = "Alle Länder" && company_filter.value == "") {
+                table.clearFilter();
+            } else {
+                table.clearFilter();
+                table.setFilter("company", "=", company_filter.value);
+            }
+
+        };
+
 
     }
 });
