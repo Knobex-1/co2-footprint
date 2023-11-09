@@ -7,7 +7,7 @@
 }
 
 .border-global {
-    border-color: #B4D868;
+    border-color: #D2F199;
     border-style: solid;
 }
 
@@ -52,5 +52,10 @@ darf sich nicht wiederholen und den gesamten Bildschirm ausnutzen*/
 }
 #co2-table {
     
+}
+
+#footer {
+    min-height: 10vh;
+    background-color: #E4F7BF;
 }
 

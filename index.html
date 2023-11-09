@@ -1,5 +1,5 @@
 <!DOCTYPE html>
-<html lang="de-de">
+<html lang="de-de" dir="">
     <head>
         <!--Zeichensatz für die Darstellung der Seite + Einstellung das die Website auf mobilen Geräten richtig angezeigt wird-->
         <meta charset="utf-8"> 
@@ -11,24 +11,25 @@
         <link rel="stylesheet" href="/css/bootstrap.min.css">
         <link rel="stylesheet" href="/css/tabulator_bootstrap5.css">
 
-        <!--Einbindung der JS Frameworks Papa Parse und Tabulator-->
+        <!--Einbindung der JS Frameworks Papa Parse, Tabulator und Bootstrap-->
         <script type="text/javascript" src="/js/papaparse.min.js" defer></script>
         <script type="text/javascript" src="/js/tabulator.min.js" defer></script>
+        <script type="text/javascript" src="/js/bootstrap.bundle.min.js" defer></script>
         <!--Einbindung des eigenen JS Scrips-->
         <script type="text/javascript" src="/js/table.js" defer></script>
         <!--Scripts müssen durch defer warten, bis die Website geladen ist-->
     </head>
     <body>
         <section id="start">
-            <nav class="navbar navbar-expand-md navbar-light bg-transparent">
+            <nav class="navbar navbar-expand-md navbar-light bg-transparent" dir="r">
               <a class="navbar-brand">
                 <img src="/img/logo.png" width="60" height="60" class="d-inline-block align-top">
                 <span class="display-6 fw-semibold">Green Planet e.V.</span>
               </a>
               <div class="navbar-collapse collapse" id="navbarText">
-                <ul class="navbar-nav">
+                <ul class="navbar-nav bg-light">
                   <li class="nav-item">
-                    <a class="nav-link" href="#start">Start</a>
+                    <a class="nav-link " href="#start">Start</a>
                   </li>
                   <li class="nav-item">
                     <a class="nav-link" href="#goals">Unsere Ziele</a>
@@ -113,6 +114,20 @@
           </section>
     </body>
     <footer>
-
+      <section id="footer">
+        <div class="row justify-content-center pt-4">
+          <div class="col-8 col-md-5 m-2 border text-center"> 
+            <p class="fs-5 mb-0 fw-bold">Rechtliches</p>
+            <p class="m-0"><a class="link-dark" href="/impressum.html">Impressum</a></p>
+          </div>
+          <div class="col-8 col-md-5 m-2 border-1 border"> 
+            <p class="fs-6 text-center text-muted">
+              &copy; 2023 GreenPlanet e.V. Alle Rechte vorbehalten. <br>
+              Der Inhalt dieser Website ist urheberrechtlich geschützt. <br>
+              Entwickelt von Tim Knobloch.
+            </p>
+          </div>
+        </div>
+      </section>
     </footer>
 </html>
