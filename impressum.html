@@ -1,0 +1,96 @@
+<!DOCTYPE html>
+<html lang="de-de" dir="">
+    <head>
+        <!--Zeichensatz für die Darstellung der Seite + Einstellung das die Website auf mobilen Geräten richtig angezeigt wird-->
+        <meta charset="utf-8"> 
+        <meta name="viewport" content="width=device-width, initial-scale=1">
+        <title>Green Planet e.V.</title>
+
+        <!--Einbindung der Stylesheets /global.css + der bootstrap.min.css vom Bootstrap CSS Framework -->
+        <link rel="stylesheet" href="/css/global.css">
+        <link rel="stylesheet" href="/css/bootstrap.min.css">
+        <link rel="stylesheet" href="/css/tabulator_bootstrap5.css">
+
+        <!--Einbindung der JS Frameworks Papa Parse, Tabulator und Bootstrap-->
+        <script type="text/javascript" src="/js/papaparse.min.js" defer></script>
+        <script type="text/javascript" src="/js/tabulator.min.js" defer></script>
+        <script type="text/javascript" src="/js/bootstrap.bundle.min.js" defer></script>
+        <!--Einbindung des eigenen JS Scrips-->
+        <script type="text/javascript" src="/js/table.js" defer></script>
+        <!--Scripts müssen durch defer warten, bis die Website geladen ist-->
+    </head>
+    <body>
+        <section id="start">
+            <nav class="navbar navbar-expand-md navbar-light bg-transparent" id="nav" dir="ltr">
+              <a class="navbar-brand">
+                <img src="/img/logo.png" width="60" height="60" class="d-inline-block align-top">
+                <span class="display-6 fw-semibold">Green Planet e.V.</span>
+              </a>
+              <div class="navbar-collapse collapse" id="navbarText">
+                <ul class="navbar-nav bg-light">
+                  <li class="nav-item">
+                    <a class="nav-link " href="/index.html">Home</a>
+                  </li>
+                </ul>
+              </div>
+              <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarText" aria-controls="navbarText" aria-expanded="false" aria-label="Toggle navigation">
+                <span class="navbar-toggler-icon"></span>
+              </button>
+            </nav>
+            <script> //Script zum erkennen der Schriftkultur
+              let rtlLanguage = ["ar", "he", "ur"]; //meistverwendeten Sprachcodes für rtl-Schreibweise
+              if (rtlLanguage.includes(navigator.language.split('-')[0])) {
+                document.getElementById("nav").setAttribute('dir', 'rtl'); //Wenn die Navigationssprache eine der drei oben ausgewählten rtlLanguage entspricht, wird dir auf rtl gesetzt, sonst bleibt er auf ltr
+              }
+            </script>
+            <div class="container-fluid row">
+                <div class="d-flex flex-wrap justify-content-around p-3 ms-5 h-100 col-10 col-md-10 col-xl-7 rounded-5 bg-globalT border-global">
+                  <h1 class="display-5 fw-bold col-12"><u>Impressum</u></h1>
+                  <div class="col-12 col-md-6 col-lg-3">
+                    <p class="fs-4 fw-semibold"><u>Anschrift:</u></p>
+                    <p class="fs-5">Green Planet e.V. <br>Gemüse-Str. 3 <br>58842 Planetstadt</p>
+                    <p class="fs-4 fw-semibold"><u>Kontakt:</u></p>
+                    <p class="fs-5">Telefon: 0123-456789 <br>E-Mail: <a href="mailto:kontakt@gruenplanet.de">kontakt@greenplanet.de</a></p> 
+                  </div>
+                  <div class="col-12 col-md-6">
+                    <p class="fs-4 fw-semibold"><u>Weitere Angaben:</u></p>
+                    <p class="fs-5">Vereinsregister: VR 123456789 <br> Registergericht: Amtsgericht xxxxxxxxx</p>
+                    <p class="fs-5"><b>Vertreten durch den Vorstand:</b>
+                        <ul>
+                            <li>
+                                Herr Gemüse, Alexander
+                            </li>
+                            <li>
+                                Frau Zwiebel, Ivone
+                            </li>
+                        </ul>
+                    </p>
+                    <p class="fs-5"><b>Verantwortlich für den Inhalt nach § 55 Abs. 2 RStV: </b><br>Herr Gemüse, Alexander <br>Gemüse-Str. 3 <br>58842 Planetstadt</p>                  </div>
+                  <div class="col-12 align-content-end">
+                    <a href="/index.html">
+                      <button class="btn btn-outline-success btn-lg" type="button">zur Startseite</button>
+                    </a>
+                  </div>
+                  
+                </div>
+              </div>
+          </section>
+    </body>
+    <footer>
+      <section id="footer">
+        <div class="row justify-content-center pt-4">
+          <div class="col-8 col-md-5 m-2 text-center"> 
+            <p class="fs-5 mb-0 fw-bold">Rechtliches</p>
+            <p class="m-0"><a class="link-dark" href="/impressum.html">Impressum</a></p>
+          </div>
+          <div class="col-8 col-md-5 m-2 text-center"> 
+            <p class="fs-6 text-center text-muted">
+              &copy; 2023 GreenPlanet e.V. Alle Rechte vorbehalten. <br>
+              Der Inhalt dieser Website ist urheberrechtlich geschützt. <br>
+              Entwickelt von Tim Knobloch.
+            </p>
+          </div>
+        </div>
+      </section>
+    </footer>
+</html>

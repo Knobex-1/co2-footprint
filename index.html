@@ -44,13 +44,12 @@
               </button>
             </nav>
             <script> //Script zum erkennen der Schriftkultur
-              let rtlLanguage = ['ar', 'he', 'ur']; //meistverwendeten Sprachcodes für rtl-Schreibweise
-              let language = navigator.language.split('-')[0];
-              if (rtlLanguage.includes(language)) {
+              let rtlLanguage = ["ar", "he", "ur"]; //meistverwendeten Sprachcodes für rtl-Schreibweise
+              if (rtlLanguage.includes(navigator.language.split('-')[0])) {
                 document.getElementById("nav").setAttribute('dir', 'rtl'); //Wenn die Navigationssprache eine der drei oben ausgewählten rtlLanguage entspricht, wird dir auf rtl gesetzt, sonst bleibt er auf ltr
               }
             </script>
-            <div id="start-container" class="container-fluid row">
+            <div class="container-fluid row">
                 <div class="p-3 p-md-5 ms-auto ms-md-5 mt-5 h-100 col-11 col-md-8 col-lg-7 col-xl-6 col-xxl-5 rounded-5 bg-globalT border-global">
                   <h1 class="display-5 fw-bold">Green Planet e.V.</h1>
                   <p class="fs-4">Unsere Non-Profit-Organisation widmet sich dem Thema Klimawandel! <br> Als Teil einer interdisziplinären Teams haben wir uns zum Ziel gesetzt mehr Transparenz darüber zu schaffen welche Unternehmen und Länder wie viel CO&sup2 jährlich emittieren.</p>
