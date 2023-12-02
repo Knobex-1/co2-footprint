@@ -1,4 +1,6 @@
-/**Backgrounds**/
+/*********************/
+/**Background Colors**/
+/*********************/
 .bg-global {
     background-color: #F3FCDF;
 }
@@ -11,12 +13,12 @@
     border-style: solid;
 }
 
+/************/
 /**Paddings**/
+/************/
 .section-padding {
     padding: 75px 0;
 }
-
-/**Global**/
 
 /************/
 /**Sections**/
@@ -24,14 +26,16 @@
 
 /** start **/
 #start {
-    height: 100vh;
+    min-height: 100vh;
+    padding-bottom: 1em;
     background-image: url(/img/main.png);
     background-repeat: no-repeat;
     background-size: cover;
 }
+/*Der Start nimmt mindestens die gesamte Höhe des Bildschirm ein, weil das Impressum je nach Bildschirmgröße, größer
+als der Bildschirm sein kann.
+Das Hintergrundbild darf sich nicht wiederholen und den gesamten Bildschirm ausnutzen*/
 
-/*Der Start soll den gesamten Höhe des Bildschirm einnehmen, das Hintergrundbild
-darf sich nicht wiederholen und den gesamten Bildschirm ausnutzen*/
 
 /** goals **/
 #goals h3 {
@@ -45,7 +49,7 @@ darf sich nicht wiederholen und den gesamten Bildschirm ausnutzen*/
 }
 
 /** tabel **/
-#tabel hr {
+#table hr {
     width: 20em;
     margin-top: -0.5em;
     border-top: 4px solid;

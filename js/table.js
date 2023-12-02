@@ -1,3 +1,5 @@
+//Funktion wird in Papa.parse() um Code Wiederholungen zu vermeiden
+//Hinzufügen des erstellten Optionsfeld zur jeweiligen Datalist
 function createOption(value) {
     let option = document.createElement("option");
     option.value = value;
@@ -58,9 +60,10 @@ Papa.parse("/data/table.csv", {
         document.getElementById("filterButton").addEventListener('click', filtern);
         function filtern(){
             table.clearFilter();//Löscht alle Filter Einstellungen
-            errorText.textContent = "";
-            if (company_filter.value && !uniqueCompanyNames.includes(company_filter.value) && company_filter.value !="") {
-                errorText.textContent = "Ungültige Firmenauswahl.";
+            errorText.textContent = ""; //Leeren der Fehleranzeige
+            //Wenn ein Unternehmen oder Land nicht gefunden wird. Wird ein Fehler ausgegebn und die Funktion beendet.
+            if (company_filter.value && !uniqueCompanyNames.includes(company_filter.value) && company_filter.value !="") { 
+                errorText.textContent = "Ungültige Unternehmenauswahl.";
                 return;
             }
             if (country_filter.value && !uniqueCountryNames.includes(country_filter.value) && country_filter.value !="Alle Länder") {

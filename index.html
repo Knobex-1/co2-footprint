@@ -1,5 +1,5 @@
 <!DOCTYPE html>
-<html lang="de-de" dir="">
+<html lang="de-de">
     <head>
         <!--Zeichensatz für die Darstellung der Seite + Einstellung das die Website auf mobilen Geräten richtig angezeigt wird-->
         <meta charset="utf-8"> 
@@ -21,13 +21,13 @@
     </head>
     <body>
         <section id="start">
-            <nav class="navbar navbar-expand-md navbar-light bg-transparent" id="nav" dir="ltr">
+            <nav class="navbar navbar-expand-md navbar-light" id="nav" dir="ltr">
               <a class="navbar-brand">
                 <img src="/img/logo.png" width="60" height="60" class="d-inline-block align-top">
                 <span class="display-6 fw-semibold">Green Planet e.V.</span>
               </a>
               <div class="navbar-collapse collapse" id="navbarText">
-                <ul class="navbar-nav bg-light">
+                <ul class="navbar-nav">
                   <li class="nav-item">
                     <a class="nav-link " href="#start">Start</a>
                   </li>
@@ -35,7 +35,7 @@
                     <a class="nav-link" href="#goals">Unsere Ziele</a>
                   </li>
                   <li class="nav-item">
-                    <a class="nav-link" href="#tabel">CO&sup2 Emmisionen</a>
+                    <a class="nav-link" href="#table">CO&sup2 Emmisionen</a>
                   </li>
                 </ul>
               </div>
@@ -46,7 +46,7 @@
             <script> //Script zum erkennen der Schriftkultur
               let rtlLanguage = ["ar", "he", "ur"]; //meistverwendeten Sprachcodes für rtl-Schreibweise
               if (rtlLanguage.includes(navigator.language.split('-')[0])) {
-                document.getElementById("nav").setAttribute('dir', 'rtl'); //Wenn die Navigationssprache eine der drei oben ausgewählten rtlLanguage entspricht, wird dir auf rtl gesetzt, sonst bleibt er auf ltr
+                document.getElementById("nav").setAttribute('dir', 'rtl'); //Wenn die Navigationssprache eine der drei oben ausgewählten rtlLanguage entspricht, wird dir auf rtl gesetzt, sonst bleibt es auf ltr
               }
             </script>
             <div class="container-fluid row">
@@ -83,29 +83,29 @@
             </div>
           </section>
 
-          <section id="tabel" class="section-padding bg-global">
+          <section id="table" class="section-padding bg-global">
             <div class="container-fluid row justify-content-center">
               <div class="row justify-content-center">
                 <h1 class="display-5 fw-bold text-center">CO&sup2-Emissionen</h1>
                 <hr>
               </div>
               <div class="row justify-content-center">
-                <div class="col-xl-6 col-lg-8 col-md-10">
+                <div class="col-xl-6 col-lg-8 col-md-10 col-12">
                   <!--Filter Auswahl für die Tabellen-->
-                  <div class="d-flex flex-wrap justify-content-end g-3 pb-3">
-                    <div class="col-4 pe-1">
+                  <div class="d-flex flex-wrap justify-content-start justify-content-md-end g-3 pb-md-3">
+                    <div class="col-6 col-md-4 pe-1">
                         <p class="mb-0 fw-bold">Land</p>
                         <select name="country_filter" id="country_filter" class="form-select">
                           <option value="Alle Länder">Alle Länder</option>
                         </select>
                     </div>
-                    <div class="col-4 pe-3">
+                    <div class="col-6 col-md-4 pe-md-3">
                       <p class="mb-0 fw-bold">Unternehmen</p>
                       <input type="text" list="company_dList" id="company_filter" class="form-control">
                       <datalist id="company_dList">
                       </datalist>
                     </div>
-                    <div class="col-3">
+                    <div class="col-6 col-md-3 ">
                       <br>
                       <button type="button" class="btn btn-primary" id="filterButton">Filtern</button>
                     </div>
