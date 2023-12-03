@@ -7,7 +7,9 @@
 .bg-globalT {
     background-color:#f3fcdf91;
 }
-
+.bg-globalDark {
+    background-color: #E4F7BF;
+}
 .border-global {
     border-color: #D2F199;
     border-style: solid;
@@ -34,7 +36,7 @@
 }
 /*Der Start nimmt mindestens die gesamte Höhe des Bildschirm ein, weil das Impressum je nach Bildschirmgröße, größer
 als der Bildschirm sein kann.
-Das Hintergrundbild darf sich nicht wiederholen und den gesamten Bildschirm ausnutzen*/
+Das Hintergrundbild darf sich nicht wiederholen und fühlt die gesamte Startsektion aus*/
 
 
 /** goals **/
@@ -42,6 +44,8 @@ Das Hintergrundbild darf sich nicht wiederholen und den gesamten Bildschirm ausn
     height: 3em;
     border-bottom: 2px solid rgba(172, 172, 172, 0.472);
 }
+/* border-bottom erstellt eine Trennlinie zwischen allen <h3> in #goals zu den darunter folgenden <p> */
+
 #goals hr {
     width: 15em;
     margin-top: -0.5em;
@@ -54,11 +58,10 @@ Das Hintergrundbild darf sich nicht wiederholen und den gesamten Bildschirm ausn
     margin-top: -0.5em;
     border-top: 4px solid;
 }
-#co2-table {
-    
-}
+/* #goals hr und #table hr erstellen eine horizontalen Strich mit einer festen Breite und einer
+Dicke von 4px. Zur einer visuellen Trennung */
 
 #footer {
     min-height: 10vh;
-    background-color: #E4F7BF;
 }
+/* eine Mindesthöhe von 10vh für den Footer */
