@@ -1,5 +1,5 @@
 //Funktion wird in Papa.parse() um Code Wiederholungen zu vermeiden
-//Hinzufügen des erstellten Optionsfeld zur jeweiligen Datalist
+//Hilfsfunktion um Optionsfelder dynamisch für den Filter zu erzeugen (Generierung der Auswahlmöglichkeiten)
 function createOption(value) {
     let option = document.createElement("option");
     option.value = value;
@@ -24,8 +24,7 @@ Papa.parse("/data/table.csv", {
                 {title:"CO&sup2;-Emissionen in t", field:"co2", sorter:"number", formatterParams:"color"},
             ],
         });
-        //Test DataList für Filter
-        let errorText = document.getElementById("errorText");
+        let errorText = document.getElementById("errorText");//verweist auf das <p>-Element in der Tabelle. Zum anzeigen von Fehlermeldungen
         let companyNames = results.data.map(entry => entry.company);//Erzeugt ein Array das nur aus den Firmennamen der table.csv Datei besteht. Problem: Wenn eine Firma doppelt vorkommen, ist diese mit im Array
         let uniqueCompanyNames = [...new Set(companyNames)];//Durch "Set" werden alle doppelten Firmennamen aus dem Array entfernt
         let company_dList = document.getElementById("company_dList");
@@ -38,7 +37,8 @@ Papa.parse("/data/table.csv", {
         });
         
         //Company Filter
-        document.getElementById("country_filter").addEventListener('change', change);
+        //fügt ein EventListener hinzu, sobald eine Änderung auftritt, wird die funktion change() aufgerufen
+        document.getElementById("country_filter").addEventListener('change', change); 
         function change(){
             company_dList.textContent =""; // Auswahl leeren
             company_filter.value =""; //setzt den Value auf ""
@@ -46,7 +46,7 @@ Papa.parse("/data/table.csv", {
                 let filteredCompanySection = results.data.filter(entry => entry.country === country_filter.value);
                 let filteredCompanyNames = filteredCompanySection.map(entry => entry.company);//Erzeugt ein Array das nur aus den Firmennamen der table.csv Datei besteht. Problem: Wenn eine Firma doppelt vorkommen, ist diese mit im Array
                 let filteredUniqueCompanyNames = [...new Set(filteredCompanyNames)];//Durch "Set" werden alle doppelten Firmennamen aus dem Array entfernt
-                filteredUniqueCompanyNames.forEach(name =>{
+                filteredUniqueCompanyNames.forEach(name =>{ //durchläuft jedes Element das Array 
                     company_dList.appendChild(createOption(name));
                 });
             } else {
@@ -74,7 +74,7 @@ Papa.parse("/data/table.csv", {
                 table.setFilter("country", "=", country_filter.value); //Einstellen des Filters country mit den Wert aus dem Select Element
                 if (company_filter.value != "") {
                     // Überprüft ob das Unternehmen im ausgewählten Land existiert
-                    let match = results.data.some(entry => entry.country === country_filter.value && entry.company === company_filter.value);
+                    let match = results.data.some(entry => entry.country === country_filter.value && entry.company === company_filter.value); //überprüft ob es mindestens einen gleichen Eintrag gibt, wenn ja wird match auf true gesetzt, andernfalls auf false
                     if (match) {
                         table.setFilter("company", "=", company_filter.value);
                     } else {
