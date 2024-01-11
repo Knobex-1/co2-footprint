@@ -43,14 +43,15 @@
                 document.getElementById("nav").setAttribute('dir', 'rtl'); //Wenn die Navigationssprache eine der drei oben ausgewählten rtlLanguage entspricht, wird dir auf rtl gesetzt, sonst bleibt er auf ltr
               }
             </script>
+            <!--Startsektion Jumbotron-->
             <div class="container-fluid row">
                 <div class="d-flex flex-wrap justify-content-around p-3 ms-5 h-100 col-10 col-md-10 col-xl-7 rounded-5 bg-globalT border-global">
                   <h1 class="display-5 fw-bold col-12"><u>Impressum</u></h1>
-                  <div class="col-12 col-md-6 col-lg-3">
+                  <div class="col-12 col-md-6">
                     <p class="fs-4 fw-semibold"><u>Anschrift:</u></p>
                     <p class="fs-5">Green Planet e.V. <br>Gemüse-Str. 3 <br>58842 Planetstadt</p>
                     <p class="fs-4 fw-semibold"><u>Kontakt:</u></p>
-                    <p class="fs-5">Telefon: 0123-456789 <br>E-Mail: <a href="mailto:kontakt@gruenplanet.de">kontakt@greenplanet.de</a></p> 
+                    <p class="fs-5">Telefon: 0123-456789 <br>E-Mail: <a href="mailto:kontakt@gruenplanet.de" class="link-primary link-offset-2 link-underline-opacity-25  link-underline-opacity-100-hover">kontakt@greenplanet.de</a></p> 
                   </div>
                   <div class="col-12 col-md-6">
                     <p class="fs-4 fw-semibold"><u>Weitere Angaben:</u></p>
@@ -66,7 +67,24 @@
                         </ul>
                     </p>
                     <p class="fs-5"><b>Verantwortlich für den Inhalt nach § 55 Abs. 2 RStV: </b><br>Herr Gemüse, Alexander <br>Gemüse-Str. 3 <br>58842 Planetstadt</p>                  </div>
-                  <div class="col-12 align-content-end">
+                  <div class="col-12">
+                    <p class="fs-4 fw-bold col-12"><u>Bildquellen</u></p>
+                    <ul>
+                      <li>
+                       <a href="/img/logo.png" target="_blank" class="link-secondary link-offset-2 link-underline-opacity-25  link-underline-opacity-100-hover">Website Logo</a> - Generiert durch Adobe FireFly (2023) - Kommerzielle Nutzung gemäß Adobe-Nutzungsbedingungen erlaubt
+                      </li>
+                      <li>
+                        <a href="/img/main.png" target="_blank" class="link-secondary link-offset-2 link-underline-opacity-25  link-underline-opacity-100-hover">Website Hintergrundbild</a> - Generiert durch Midjourney (2023) - Kommerzielle Nutzung gemäß Midjourney-Nutzungsbedingungen erlaubt
+                      </li>
+                    </ul>
+                    <p class="fs-4 fw-bold col-12"><u>Text- und Datenquellen</u></p>
+                    <ul>
+                      <li>
+                        <a href="/data/table.csv" target="_blank" class="link-secondary link-offset-2 link-underline-opacity-25  link-underline-opacity-100-hover">Tabellen Inhalt CO&sup2-Emissionen</a> - Generiert durch ChatGPT-4 (2023) - OpenAI <br> Kommerzielle Nutzung gemäß OpenAI-Nutzungsbedingungen erlaubt
+                      </li>
+                    </ul>
+                  </div>
+                  <div class="col-12 ps-3 pb-3">
                     <a href="/index.html">
                       <button class="btn btn-outline-success btn-lg" type="button">zur Startseite</button>
                     </a>
@@ -81,7 +99,7 @@
         <div class="row justify-content-center pt-4">
           <div class="col-8 col-md-5 m-2 text-center"> 
             <p class="fs-5 mb-0 fw-bold">Rechtliches</p>
-            <a class="link-dark" href="/impressum.html">Impressum</a>
+            <a class="link-primary link-offset-2 link-underline-opacity-25  link-underline-opacity-100-hover" href="/impressum.html">Impressum</a>
           </div>
           <div class="col-8 col-md-5 m-2 text-center text-muted"> 
             <p>
