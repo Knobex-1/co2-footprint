@@ -21,7 +21,9 @@
         <!--Scripts müssen durch defer warten, bis die Website geladen ist-->
     </head>
     <body>
+        <!--Startsektion-->
         <section id="start">
+             <!--Navigationsbereich-->
             <nav class="navbar navbar-expand-md navbar-light" id="nav" dir="ltr">
               <a class="navbar-brand">
                 <img src="/img/logo.png" width="60" height="60" class="d-inline-block align-top">
@@ -46,7 +48,7 @@
             </nav>
             <script> //Script zum erkennen der Schriftkultur
               let rtlLanguage = ["ar", "he", "ur"]; //meistverwendeten Sprachcodes für rtl-Schreibweise
-              if (rtlLanguage.includes(navigator.language.split('-')[0])) {
+              if (rtlLanguage.includes(navigator.language.split('-')[0])) { //Überprüft ob die Sprache des Benutzers (wird ermittelt durch navigator.language) in dem Array rtlLanguage vorkommt
                 document.getElementById("nav").setAttribute('dir', 'rtl'); //Wenn die Navigationssprache eine der drei oben ausgewählten rtlLanguage entspricht, wird dir auf rtl gesetzt, sonst bleibt es auf ltr
               }
             </script>
@@ -61,7 +63,7 @@
                 </div>
               </div>
           </section>
-
+            <!--Goals-Sektion-->
           <section id="goals" class="section-padding">
             <div class="container-fluid">
               <div class="row justify-content-center">
@@ -84,7 +86,7 @@
               </div>
             </div>
           </section>
-
+            <!--Table-Sektion-->
           <section id="table" class="section-padding bg-global">
             <div class="container-fluid">
               <div class="row justify-content-center">
@@ -122,11 +124,12 @@
           </section>
     </body>
     <footer>
+      <!--Footer Sektion-->
       <section id="footer" class="bg-globalDark">
         <div class="row justify-content-center pt-4">
           <div class="col-8 col-md-5 m-2 text-center"> 
             <p class="fs-5 mb-0 fw-bold">Rechtliches</p>
-            <a class="link-dark" href="/impressum.html">Impressum</a>
+            <a class="link-primary link-offset-2 link-underline-opacity-25  link-underline-opacity-100-hover" href="/impressum.html">Impressum</a>
           </div>
           <div class="col-8 col-md-5 m-2 text-center text-muted"> 
             <p>
