@@ -11,10 +11,10 @@ Papa.parse("/data/table.csv", {
     download: true, //Download der angegeben Datei vom angegebenen Pfad
     header:true, //Interpretiert erste Zeile als Kopfzeile
     dynamicTyping:true, //automatische Konvertierung der String-Werte in ihren Typ
-    complete: function(results) { //Nach Abschluss des Parsen--> Callback Funktion um die Erebnisse dem Tabulator als results.data weiterzugeben
+    complete: function(results) { //Nach Abschluss des Parsen--> Callback Funktion um die Erebnisse dem Tabulator als results.data weiterzugeben. reuslts.data als Array gespeichert
         // Tabulator mit den Daten initialisieren
         var table = new Tabulator("#co2-table", {
-            layout:"fitDataStretch",
+            layout:"fitDataStretch", //für eine Tabelle die, die den gesamten div-Container ausfüllt
             height:400,
             data: results.data, //Results von Papa.parse aus der "/data/table.csv" einsetzen als Daten für den Tabulator
             columns: [ //Definiert die Spalten für den Tabulator
@@ -46,7 +46,7 @@ Papa.parse("/data/table.csv", {
                 let filteredCompanySection = results.data.filter(entry => entry.country === country_filter.value);
                 let filteredCompanyNames = filteredCompanySection.map(entry => entry.company);//Erzeugt ein Array das nur aus den Firmennamen der table.csv Datei besteht. Problem: Wenn eine Firma doppelt vorkommen, ist diese mit im Array
                 let filteredUniqueCompanyNames = [...new Set(filteredCompanyNames)];//Durch "Set" werden alle doppelten Firmennamen aus dem Array entfernt
-                filteredUniqueCompanyNames.forEach(name =>{ //durchläuft jedes Element das Array 
+                filteredUniqueCompanyNames.forEach(name =>{ //durchläuft jedes Element des Array 
                     company_dList.appendChild(createOption(name));
                 });
             } else {
