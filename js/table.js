@@ -64,20 +64,26 @@ Papa.parse("/data/table.csv", {
             errorText.textContent = ""; //Leeren der Fehleranzeige
             //Wenn ein Unternehmen oder Land nicht gefunden wird. Wird ein Fehler ausgegebn und die Funktion beendet.
             if (company_filter.value && !uniqueCompanyNames.includes(company_filter.value) && company_filter.value !="") { 
+                company_filter.value =""; //setzt den Value auf ""
                 errorText.textContent = "Ungültige Unternehmenauswahl.";
                 return;
             }
             if (country_filter.value && !uniqueCountryNames.includes(country_filter.value) && country_filter.value !="Alle Länder") {
+                country_filter.value ="Alle Länder"; //setzt den Value auf ""
                 errorText.textContent = "Ungültige Länderauswahl.";
                 return;
             }
-            if (country_filter.value != "Alle Länder" && country_filter.value != "") { //Prüft ob NICHT im country_filter.value "Alle Länder" und das dieser nicht Leer ist
+            if (country_filter.value != "Alle Länder" && country_filter.value != "") { //Prüft ob country_filter.value NICHT "Alle Länder" und nicht Leer ist
                 table.setFilter("country", "=", country_filter.value); //Einstellen des Filters country mit den Wert aus dem Select Element
                 if (company_filter.value != "") {
                     // Überprüft ob das Unternehmen im ausgewählten Land existiert
                     let match = results.data.some(entry => entry.country === country_filter.value && entry.company === company_filter.value); //überprüft ob es mindestens einen gleichen Eintrag gibt, wenn ja wird match auf true gesetzt, andernfalls auf false
                     if (match) {
-                        table.setFilter("company", "=", company_filter.value);
+                        table.setFilter([ //Setzen mehrer Filter Optionen. Es wird nach Unternehmen und dem jeweiligen Land gefiltert. Würde nicht nach dem Land gefiltert werden, würden auch Unternehmen mit dem selben Namen in anderen Ländern angezeigt werden
+                            {field:"country", type:"=", value:country_filter.value},
+                            {field:"company", type:"=", value:company_filter.value}
+                        ]);
+                        
                     } else {
                         errorText.textContent = "Das ausgewählte Unternehmen existiert nicht im gewählten Land.";
                         company_filter.value =""; //setzt den Value auf ""
