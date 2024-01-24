@@ -47,7 +47,7 @@
               </button>
             </nav>
             <script> //Script zum erkennen der Schriftkultur
-              let rtlLanguage = ["ar", "he", "ur"]; //meistverwendeten Sprachcodes für rtl-Schreibweise
+              let rtlLanguage = ["ar", "arc", "dv", "fa", "ha", "he", "khw", "ks", "ku", "ps", "ur", "yi"]; //Sprachcodes für rtl-Schreibweise
               if (rtlLanguage.includes(navigator.language.split('-')[0])) { //Überprüft ob die Sprache des Benutzers (wird ermittelt durch navigator.language) in dem Array rtlLanguage vorkommt
                 document.getElementById("nav").setAttribute('dir', 'rtl'); //Wenn die Navigationssprache eine der drei oben ausgewählten rtlLanguage entspricht, wird dir auf rtl gesetzt, sonst bleibt es auf ltr
               }
